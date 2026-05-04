@@ -1,9 +1,20 @@
 <script setup>
-import { RouterView } from 'vue-router'
+import { RouterView, RouterLink } from 'vue-router'
+import Navigation from './components/Navigation.vue';
 </script>
 
 <template>
-  <RouterView />
+  <header class="container">
+    <Navigation />
+  </header>
+  <main class="container">
+    <RouterView />
+  </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+</style>

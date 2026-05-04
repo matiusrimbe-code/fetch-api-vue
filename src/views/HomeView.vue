@@ -1,18 +1,25 @@
 <script setup>
 import Pagination from '@/components/Pagination.vue';
 import ProductCard from '@/components/ProductCard.vue';
+import { onBeforeMount, onMounted } from 'vue';
 
-</script>
+onBeforeMount(() => {
+  console.log('On Before Mount')
+})
+
+onMounted(() => {
+  console.log('On Mounted')
+})
+
+</script> 
 
 <template>
-  <main>
-    <div class="product-grid">
-      <ProductCard />
-    </div>
-    <div class="pagination">
-      <Pagination />
-    </div>
-  </main>
+  <div class="product-grid">
+    <ProductCard />
+  </div>
+  <div class="pagination">
+    <Pagination />
+  </div>
 </template>
 
 <style scoped>
@@ -20,7 +27,6 @@ import ProductCard from '@/components/ProductCard.vue';
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
-  width: 80%;
   margin: 0 auto;
 }
 
