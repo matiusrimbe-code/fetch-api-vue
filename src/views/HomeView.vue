@@ -1,7 +1,7 @@
 <script setup>
 import Pagination from '@/components/Pagination.vue';
 import ProductCard from '@/components/ProductCard.vue';
-import { onBeforeMount, onBeforeUpdate, onMounted, onUpdated, ref } from 'vue';
+import { onBeforeMount, onBeforeUnmount, onBeforeUpdate, onMounted, onUnmounted, onUpdated, ref } from 'vue';
 
 const page = ref(1)
 
@@ -23,6 +23,14 @@ onBeforeUpdate(() => {
 
 onUpdated(() => {
   console.log('On Updated')
+})
+
+onBeforeUnmount(() => {
+  console.log('ON Before Unmount')
+})
+
+onUnmounted(() => {
+  console.log('On Unmounted')
 })
 </script>
 
