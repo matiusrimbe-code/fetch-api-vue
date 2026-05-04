@@ -6,20 +6,16 @@ import axios from 'axios';
 
 const products = ref([]);
 
-async function getProducts() {
-  const response = await axios.get('http://localhost:3000/products');
-  products.value = response.data
-}
-
-getProducts();
+const response = await axios.get('http://localhost:3000/products');
+products.value = response.data
 
 </script>
 
 <template>
   <div class="product-grid">
-    {{ products }}
-    <ProductCard />
+    <ProductCard v-for="product in products" :key="product.id" :product="product" />
   </div>
+
   <div class="pagination">
     <Pagination />
   </div>
