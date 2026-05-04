@@ -1,7 +1,13 @@
 <script setup>
 import Pagination from '@/components/Pagination.vue';
 import ProductCard from '@/components/ProductCard.vue';
-import { onBeforeMount, onMounted } from 'vue';
+import { onBeforeMount, onBeforeUpdate, onMounted, onUpdated, ref } from 'vue';
+
+const page = ref(1)
+
+function nextPage() {
+  page.value++
+}
 
 onBeforeMount(() => {
   console.log('On Before Mount')
@@ -11,9 +17,19 @@ onMounted(() => {
   console.log('On Mounted')
 })
 
-</script> 
+onBeforeUpdate(() => {
+  console.log('On Before Update')
+})
+
+onUpdated(() => {
+  console.log('On Updated')
+})
+</script>
 
 <template>
+  {{ page }}
+
+  <button @click="nextPage">Next Page</button>
   <div class="product-grid">
     <ProductCard />
   </div>
