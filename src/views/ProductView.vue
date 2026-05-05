@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue'
 import { RouterLink, useRoute, useRouter } from 'vue-router'
 import axios from 'axios'
+import ProductForm from '@/components/ProductForm.vue'
 
 const product = ref({})
 const route = useRoute()
@@ -39,7 +40,8 @@ async function deleteProduct() {
     <img :src="product.image" :alt="product.title" class="product-image" />
     <p>Description: {{ product.description }}</p>
     <p>Price: {{ product.price }}</p>
-    <router-link to="/" class="back-button">Back</router-link>
+    <ProductForm />
+    <RouterLink to="/" class="back-button">Back</RouterLink>
     <button @click="deleteProduct" class="delete-button">Delete</button>
   </div>
 </template>

@@ -3,6 +3,7 @@ import Pagination from '@/components/Pagination.vue'
 import ProductCard from '@/components/ProductCard.vue'
 import { ref, watchEffect } from 'vue'
 import axios from 'axios'
+import ProductForm from '@/components/ProductForm.vue'
 
 const page = ref(1)
 const perPage = ref(6)
@@ -44,6 +45,7 @@ function changePage(newPage) {
     <p class="loading">Loading ...</p>
   </div>
   <div v-else>
+    <ProductForm />
     <div class="product-grid">
       <ProductCard v-for="product in products.data" :key="product.id" :product="product" />
     </div>
