@@ -1,19 +1,10 @@
 <script setup>
 import { RouterView } from 'vue-router'
-import HomeView from './views/HomeView.vue'
 </script>
 
 <template>
   <main class="container">
-    <Suspense>
-      <template #default>
-        <HomeView />
-        <!-- <RouterView /> -->
-      </template>
-      <template #fallback>
-        <p>Loading ...</p>
-      </template>
-    </Suspense>
+    <RouterView />
   </main>
 </template>
 

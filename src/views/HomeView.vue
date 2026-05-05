@@ -1,16 +1,18 @@
 <script setup>
 import Pagination from '@/components/Pagination.vue'
 import ProductCard from '@/components/ProductCard.vue'
-import { ref, watch } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import axios from 'axios'
 
 const page = ref(1)
 const perPage = ref(8)
 const products = ref([])
 
-products.value = await axios
-  .get(`http://localhost:3000/products?_page=${page.value}&_per_page=${perPage.value}`)
-  .then((res) => res.data)
+onMounted(async () => {
+  products.value = await axios
+    .get(`http://localhost:3000/products?_page=${page.value}&_per_page=${perPage.value}`)
+    .then((res) => res.data)
+})
 
 watch(page, async () => {
   products.value = await axios
