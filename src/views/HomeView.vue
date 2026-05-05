@@ -1,23 +1,29 @@
 <script setup>
 import Pagination from '@/components/Pagination.vue'
 import ProductCard from '@/components/ProductCard.vue'
-import { onMounted, ref, watch } from 'vue'
+import { ref, watchEffect } from 'vue'
 import axios from 'axios'
 
 const page = ref(1)
-const perPage = ref(8)
+const perPage = ref(6)
 const products = ref([])
+const isLoading = ref(true)
 
-onMounted(async () => {
-  products.value = await axios
-    .get(`http://localhost:3000/products?_page=${page.value}&_per_page=${perPage.value}`)
-    .then((res) => res.data)
-})
+async function fetchData() {
+  const API_URL = `http://localhost:3000/products?_page=${page.value}&_per_page=${perPage.value}`
+  try {
+    isLoading.value = true
+    const response = await axios.get(API_URL)
+    products.value = response.data
+  } catch (error) {
+    console.log(error)
+  } finally {
+    isLoading.value = false
+  }
+}
 
-watch(page, async () => {
-  products.value = await axios
-    .get(`http://localhost:3000/products?_page=${page.value}&_per_page=${perPage.value}`)
-    .then((res) => res.data)
+watchEffect(() => {
+  fetchData()
 })
 
 function changePage(newPage) {
@@ -34,12 +40,17 @@ function changePage(newPage) {
 </script>
 
 <template>
-  <div class="product-grid">
-    <ProductCard v-for="product in products.data" :key="product.id" :product="product" />
+  <div v-if="isLoading">
+    <p class="loading">Loading ...</p>
   </div>
+  <div v-else>
+    <div class="product-grid">
+      <ProductCard v-for="product in products.data" :key="product.id" :product="product" />
+    </div>
 
-  <div class="pagination">
-    <Pagination :page="page" :totalPages="products.pages" @changePage="changePage" />
+    <div class="pagination">
+      <Pagination :page="page" :totalPages="products.pages" @changePage="changePage" />
+    </div>
   </div>
 </template>
 
@@ -56,5 +67,9 @@ function changePage(newPage) {
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+}
+
+.loading {
+  text-align: center;
 }
 </style>
