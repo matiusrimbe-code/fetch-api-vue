@@ -1,20 +1,46 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
+
+const emit = defineEmits(['createProduct', 'updateProduct'])
+const { product } = defineProps(['product'])
 
 const title = ref('')
 const description = ref('')
 const price = ref('')
 const image = ref('')
 const id = ref('')
-
 const showForm = ref(false)
+const isUpdate = computed(() => !!product)
+
+watchEffect(() => {
+  title.value = product?.title
+  description.value = product?.description
+  price.value = product?.price
+  image.value = product?.image
+  id.value = product?.id
+})
+
+function saveProduct() {
+  const formData = {
+    title: title.value,
+    description: description.value,
+    price: price.value,
+    image: image.value,
+  }
+
+  if (isUpdate.value) {
+    emit('updateProduct', formData)
+  } else {
+    emit('createProduct', formData)
+  }
+}
 </script>
 
 <template>
   <div class="add-product">
-    <button @click="showForm = !showForm">Add Product</button>
+    <button @click="showForm = !showForm">{{ isUpdate ? 'Edit' : 'Add' }} Product</button>
     <div v-if="showForm" class="product-form">
-      <form @submit.prevent="">
+      <form @submit.prevent="saveProduct">
         <label for="title">Title:</label>
         <input type="text" id="title" v-model="title" required />
         <label for="description">Description:</label>
@@ -23,7 +49,7 @@ const showForm = ref(false)
         <input type="number" id="price" v-model="price" required />
         <label for="image">Image:</label>
         <input type="text" id="image" v-model="image" required />
-        <button type="submit">Add</button>
+        <button type="submit">Save</button>
         <button @click="showForm = false" type="button">Close</button>
       </form>
     </div>

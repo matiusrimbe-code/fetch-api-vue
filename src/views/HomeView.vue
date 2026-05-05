@@ -27,6 +27,15 @@ watchEffect(() => {
   fetchData()
 })
 
+async function createProduct(product) {
+  try {
+    await axios.post('http://localhost:3000/products', product)
+    fetchData()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 function changePage(newPage) {
   if (newPage < 1) {
     newPage = 1
@@ -45,7 +54,7 @@ function changePage(newPage) {
     <p class="loading">Loading ...</p>
   </div>
   <div v-else>
-    <ProductForm />
+    <ProductForm @createProduct="createProduct" />
     <div class="product-grid">
       <ProductCard v-for="product in products.data" :key="product.id" :product="product" />
     </div>

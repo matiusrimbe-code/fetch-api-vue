@@ -1,25 +1,18 @@
 {
   "products": [
     {
-      "id": "1",
-      "title": "Smartphone Galaxy S22",
-      "description": "The latest flagship smartphone with advanced camera features and 5G connectivity.",
-      "price": 899.99,
-      "image": "https://placehold.co/150"
-    },
-    {
-      "id": "2",
-      "title": "Laptop ProBook X360",
+      "title": "Laptop ProBook X36011111",
       "description": "A versatile 2-in-1 laptop with a powerful processor and long-lasting battery life.",
-      "price": 1299.99,
-      "image": "https://placehold.co/150"
+      "price": 1291111109111,
+      "image": "https://placehold.co/150",
+      "id": "2"
     },
     {
-      "id": "3",
       "title": "Wireless Noise-Canceling Headphones",
       "description": "Immerse yourself in high-quality audio with these comfortable and noise-canceling headphones.",
-      "price": 199.99,
-      "image": "https://placehold.co/150"
+      "price": 1111111,
+      "image": "https://placehold.co/150",
+      "id": "3"
     },
     {
       "id": "4",
@@ -29,18 +22,18 @@
       "image": "https://placehold.co/150"
     },
     {
-      "id": "5",
-      "title": "Digital Camera EOS R5",
-      "description": "Capture professional-grade photos and videos with this high-performance mirrorless camera.",
-      "price": 2999.99,
-      "image": "https://placehold.co/150"
+      "title": "Digital Camera EOS R5222",
+      "description": "222Capture professional-grade photos and videos with this high-performance mirrorless camera.",
+      "price": 2999222,
+      "image": "https://placehold.co/150",
+      "id": "5"
     },
     {
-      "id": "6",
-      "title": "Fitness Tracker FitPro Max",
-      "description": "Stay active and monitor your health with this feature-packed fitness tracker.",
-      "price": 79.99,
-      "image": "https://placehold.co/150"
+      "title": "Fitness Tracker FitPro Maxqqq",
+      "description": "qqStay active and monitor your health with this feature-packed fitness tracker.",
+      "price": 791111,
+      "image": "https://placehold.co/150",
+      "id": "6"
     },
     {
       "id": "7",
@@ -418,6 +411,27 @@
       "title": "Compact Countertop Microwave",
       "description": "Effortlessly heat and cook your meals with this compact countertop microwave featuring multiple cooking presets.",
       "price": 79.99,
+      "image": "https://placehold.co/150"
+    },
+    {
+      "id": "7700",
+      "title": "Smartphone Iphone",
+      "description": "Description: The latest flagship smartphone with advanced camera features and 5G connectivity.",
+      "price": 20000,
+      "image": "https://placehold.co/150"
+    },
+    {
+      "id": "13d6",
+      "title": "dgdg",
+      "description": "dgdg",
+      "price": 1111,
+      "image": "https://placehold.co/150"
+    },
+    {
+      "id": "0565",
+      "title": "sfsf",
+      "description": "sfs",
+      "price": 111,
       "image": "https://placehold.co/150"
     }
   ]
